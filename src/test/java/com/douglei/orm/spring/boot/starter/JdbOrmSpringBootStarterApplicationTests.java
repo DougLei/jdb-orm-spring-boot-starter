@@ -12,5 +12,4 @@ public class JdbOrmSpringBootStarterApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }
