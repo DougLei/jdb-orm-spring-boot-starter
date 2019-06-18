@@ -1,1 +1,3 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.douglei.orm.spring.boot.starter.JdbOrmAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.douglei.orm.spring.boot.starter.SessionFactoryRegisterHolderAutoConfiguration,\
+com.douglei.orm.spring.boot.starter.TransactionComponentScannerAutoConfiguration
