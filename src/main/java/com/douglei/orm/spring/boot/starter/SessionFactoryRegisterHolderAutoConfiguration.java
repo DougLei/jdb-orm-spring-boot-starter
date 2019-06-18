@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.douglei.orm.context.SessionFactoryRegister;
-import com.douglei.orm.spring.boot.starter.properties.JdbOrmConfigurationProperties;
 
 /**
  * 

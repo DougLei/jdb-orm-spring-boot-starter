@@ -1,4 +1,4 @@
-package com.douglei.orm.spring.boot.starter.properties;
+package com.douglei.orm.spring.boot.starter;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -35,20 +35,6 @@ public class JdbOrmConfigurationProperties {
 	public String[] getSessionFactoryConfigurationFileArray() {
 		if(StringUtil.notEmpty(this.sessionFactoryConfigurationFiles)) {
 			return this.sessionFactoryConfigurationFiles.split(",");
-		}
-		return null;
-	}
-	
-	private String transactionComponentPackages;// 要扫描的事务组件包路径
-	public void setTransactionComponentPackages(String transactionComponentPackages) {
-		this.transactionComponentPackages = transactionComponentPackages;
-	}
-	public String getTransactionComponentPackages() {
-		return transactionComponentPackages;
-	}
-	public String[] getTransactionComponentPackageArray() {
-		if(StringUtil.notEmpty(this.transactionComponentPackages)) {
-			return this.transactionComponentPackages.split(",");
 		}
 		return null;
 	}
