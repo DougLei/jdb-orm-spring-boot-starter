@@ -38,4 +38,18 @@ public class JdbOrmConfigurationProperties {
 		}
 		return null;
 	}
+	
+	private String transactionComponentPackages;// 要扫描的事务组件包路径
+	public String getTransactionComponentPackages() {
+		return transactionComponentPackages;
+	}
+	public void setTransactionComponentPackages(String transactionComponentPackages) {
+		this.transactionComponentPackages = transactionComponentPackages;
+	}
+	public String[] getTransactionComponentPackageArray() {
+		if(StringUtil.notEmpty(this.transactionComponentPackages)) {
+			return this.transactionComponentPackages.split(",");
+		}
+		return null;
+	}
 }
