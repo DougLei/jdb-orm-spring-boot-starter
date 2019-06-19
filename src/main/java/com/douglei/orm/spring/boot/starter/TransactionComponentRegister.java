@@ -19,7 +19,7 @@ public class TransactionComponentRegister implements ImportBeanDefinitionRegistr
 	
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-		Map<String, Object> transactionComponentScannerMap = importingClassMetadata.getAnnotationAttributes(TransactionComponentScanner.class.getName());
+		Map<String, Object> transactionComponentScannerMap = importingClassMetadata.getAnnotationAttributes(TransactionComponentScan.class.getName());
 		String[] transactionComponentPackages = (String[]) transactionComponentScannerMap.get("transactionComponentPackages");
 		registerBeanDefinitions(registry, transactionComponentPackages);
 	}

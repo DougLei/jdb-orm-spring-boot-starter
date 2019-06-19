@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Import;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Import(TransactionComponentRegister.class)
-public @interface TransactionComponentScanner {
+public @interface TransactionComponentScan {
 	
 	String[] transactionComponentPackages();
 }
