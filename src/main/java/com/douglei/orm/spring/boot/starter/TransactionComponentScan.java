@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Import;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import(TransactionComponentRegister.class)
+@Import(TransactionComponentRegistry.class)
 public @interface TransactionComponentScan {
 	
 	String[] transactionComponentPackages();

@@ -12,7 +12,7 @@ import com.douglei.orm.spring.TransactionComponentRegister2Spring;
  * 
  * @author DougLei
  */
-public class TransactionComponentRegister extends TransactionComponentRegister2Spring implements ImportBeanDefinitionRegistrar{
+public class TransactionComponentRegistry extends TransactionComponentRegister2Spring implements ImportBeanDefinitionRegistrar{
 	
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
