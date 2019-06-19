@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.douglei.orm.context.SessionFactoryRegister;
+import com.douglei.orm.spring.SessionFactoryRegisterHolder;
 
 /**
  * 
@@ -17,7 +18,7 @@ import com.douglei.orm.context.SessionFactoryRegister;
 @ConditionalOnClass(SessionFactoryRegister.class) // @ConditionalOnXXX, 满足指定条件时, 该配置类生效
 @EnableConfigurationProperties(value = JdbOrmConfigurationProperties.class)
 public class SessionFactoryRegisterHolderAutoConfiguration {
-	private static final SessionFactoryRegister sessionFactoryRegister = new SessionFactoryRegister();
+	private static final SessionFactoryRegister sessionFactoryRegister = SessionFactoryRegisterHolder.getSessionFactoryRegister();
 	
 	@Autowired
 	private JdbOrmConfigurationProperties jdbOrmConfigurationProperties;
@@ -42,13 +43,5 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 				sessionFactoryRegister.registerSessionFactoryByConfigurationFile(configurationFile);
 			}
 		}
-	}
-	
-	/**
-	 * 获取SessionFactoryRegister实例
-	 * @return
-	 */
-	public static SessionFactoryRegister getSessionFactoryRegister() {
-		return sessionFactoryRegister;
 	}
 }
