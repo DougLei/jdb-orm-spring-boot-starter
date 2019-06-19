@@ -16,5 +16,5 @@ import org.springframework.context.annotation.Import;
 @Import(TransactionComponentRegistry.class)
 public @interface TransactionComponentScan {
 	
-	String[] transactionComponentPackages();
+	String[] packages();
 }
