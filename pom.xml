@@ -12,7 +12,7 @@
 	
 	<groupId>com.douglei</groupId>
 	<artifactId>jdb-orm-spring-boot-starter</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0</version> 
 	
 	<name>jdb-orm-spring-boot-starter</name>
 
