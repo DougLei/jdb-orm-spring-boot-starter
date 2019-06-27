@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Import;
 import com.douglei.orm.context.SessionFactoryRegister;
 
 /**
- * 事物组件的扫描自动配置
+ * 事物组件扫描的自动配置
  * @author DougLei
  */
 @Configuration // 标明这是一个配置类
