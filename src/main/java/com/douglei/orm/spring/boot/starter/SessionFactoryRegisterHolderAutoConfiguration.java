@@ -15,7 +15,7 @@ import com.douglei.orm.spring.SessionFactoryRegisterHolder;
  * @author DougLei
  */
 @Configuration // 标明这是一个配置类
-@ConditionalOnClass(SessionFactoryRegister.class) // @ConditionalOnXXX, 满足指定条件时, 该配置类生效
+@ConditionalOnClass(SessionFactoryRegister.class) // @ConditionalOnXXX, 满足指定条件时, 该配置类生效, 该配置表示当前classpath中存在SessionFactoryRegister类时, 该配置类生效
 @EnableConfigurationProperties(value = JdbOrmConfigurationProperties.class)
 public class SessionFactoryRegisterHolderAutoConfiguration {
 	private static final SessionFactoryRegister sessionFactoryRegister = SessionFactoryRegisterHolder.getSessionFactoryRegister();
