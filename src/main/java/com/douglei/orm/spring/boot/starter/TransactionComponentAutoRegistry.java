@@ -25,10 +25,12 @@ public class TransactionComponentAutoRegistry extends TransactionComponentRegist
 	
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-		List<String> transactionComponentPackages = AutoConfigurationPackages.get(this.beanFactory);
-		if(transactionComponentPackages == null) {
-			throw new NullPointerException("自动扫描事物组件的packages值为空!");
+		if(!AutoConfigurationPackages.has(this.beanFactory)) {
+			logger.debug("自动扫描事物组件的packages值为空");
+			return;
 		}
+		
+		List<String> transactionComponentPackages = AutoConfigurationPackages.get(this.beanFactory);
 		if(logger.isDebugEnabled()) {
 			transactionComponentPackages.forEach(transactionComponentPackage -> logger.debug("AutoConfigurationPackages.get(this.beanFactory), 获取的事物组件package为: {}", transactionComponentPackage));
 		}
