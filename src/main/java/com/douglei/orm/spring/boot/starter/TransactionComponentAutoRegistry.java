@@ -30,9 +30,9 @@ public class TransactionComponentAutoRegistry extends TransactionComponentRegist
 			throw new NullPointerException("自动扫描事物组件的packages值为空!");
 		}
 		if(logger.isDebugEnabled()) {
-			transactionComponentPackages.forEach(transactionComponentPackage -> logger.debug("自动扫描的事物组件package为: {}", transactionComponentPackage));
+			transactionComponentPackages.forEach(transactionComponentPackage -> logger.debug("AutoConfigurationPackages.get(this.beanFactory), 获取的事物组件package为: {}", transactionComponentPackage));
 		}
-		register2Spring(registry, transactionComponentPackages.toArray(new String[transactionComponentPackages.size()]));
+		register2Spring(registry, true, transactionComponentPackages.toArray(new String[transactionComponentPackages.size()]));
 	}
 
 	@Override
