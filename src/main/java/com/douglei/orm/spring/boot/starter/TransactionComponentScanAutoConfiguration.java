@@ -1,10 +1,12 @@
 package com.douglei.orm.spring.boot.starter;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import com.douglei.orm.context.SessionFactoryRegister;
+import com.douglei.orm.spring.TransactionComponentProxyBeanFactory;
 
 /**
  * 事物组件扫描的自动配置
@@ -12,6 +14,7 @@ import com.douglei.orm.context.SessionFactoryRegister;
  */
 @Configuration // 标明这是一个配置类
 @ConditionalOnClass(SessionFactoryRegister.class) // @ConditionalOnXXX, 满足指定条件时, 该配置类生效, 该配置表示当前classpath中存在SessionFactoryRegister类时, 该配置类生效
+@ConditionalOnMissingBean(TransactionComponentProxyBeanFactory.class)
 @Import(TransactionComponentAutoRegistry.class)
 public class TransactionComponentScanAutoConfiguration {
 
