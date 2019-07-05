@@ -34,7 +34,7 @@ public class TransactionComponentAutoRegistry extends TransactionComponentRegist
 		if(logger.isDebugEnabled()) {
 			transactionComponentPackages.forEach(transactionComponentPackage -> logger.debug("AutoConfigurationPackages.get(this.beanFactory), 获取的事物组件package为: {}", transactionComponentPackage));
 		}
-		register2Spring(registry, false, transactionComponentPackages.toArray(new String[transactionComponentPackages.size()]));
+		register2Spring(registry, true, transactionComponentPackages.toArray(new String[transactionComponentPackages.size()]));
 	}
 
 	@Override

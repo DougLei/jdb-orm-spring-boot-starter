@@ -20,7 +20,7 @@ import com.douglei.orm.context.SessionFactoryRegister;
 @Import(TransactionComponentRegistry.class)
 public @interface TransactionComponentScan {
 	
-	boolean searchAllPath() default false;
+	boolean searchAllPath() default true;
 	
 	String[] transactionComponentPackages();
 }
