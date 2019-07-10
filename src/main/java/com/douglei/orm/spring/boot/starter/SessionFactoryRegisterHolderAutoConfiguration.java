@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.douglei.orm.context.SessionFactoryRegister;
 import com.douglei.orm.spring.SessionFactoryRegisterHolder;
+import com.douglei.orm.spring.TransactionComponentInstantiationBeanPostProcessor;
 
 /**
  * 
@@ -29,6 +30,15 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 		registerDefaultSessionFactoryByConfigurationFile(jdbOrmConfigurationProperties.getDefaultSessionFactoryConfigurationFile());
 		registerSessionFactoryByConfigurationFile(jdbOrmConfigurationProperties.getSessionFactoryConfigurationFileArray());
 		return sessionFactoryRegister;
+	}
+	
+	/**
+	 * 注入事务组件bean的处理器
+	 * @return
+	 */
+	@Bean
+	public TransactionComponentInstantiationBeanPostProcessor transactionComponentInstantiationBeanPostProcessor() {
+		return new TransactionComponentInstantiationBeanPostProcessor();
 	}
 	
 	// 注册默认的数据源
