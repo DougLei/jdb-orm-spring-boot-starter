@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import com.douglei.orm.context.SessionFactoryRegister;
 import com.douglei.orm.spring.SessionFactoryRegisterHolder;
-import com.douglei.orm.spring.TransactionComponentBeanPostProcessor;
 
 /**
  * 
@@ -29,15 +29,6 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 		registerDefaultSessionFactoryByConfigurationFile(jdbOrmConfigurationProperties.getDefaultSessionFactoryConfigurationFile());
 		registerSessionFactoryByConfigurationFile(jdbOrmConfigurationProperties.getSessionFactoryConfigurationFileArray());
 		return sessionFactoryRegister;
-	}
-	
-	/**
-	 * 注入事务组件bean的处理器
-	 * @return
-	 */
-	@Bean
-	public TransactionComponentBeanPostProcessor transactionComponentBeanPostProcessor() {
-		return new TransactionComponentBeanPostProcessor();
 	}
 	
 	// 注册默认的数据源
