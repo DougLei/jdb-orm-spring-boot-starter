@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.douglei.orm.context.SessionFactoryRegister;
-import com.douglei.orm.spring.DestroyProxyBeanContext;
+import com.douglei.orm.spring.DestroyProxyBeanContextListener;
 import com.douglei.orm.spring.SessionFactoryRegisterHolder;
 
 /**
@@ -33,12 +33,12 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 	}
 	
 	/**
-	 * 加入销毁ProxyBeanContext的实例
+	 * 配置销毁ProxyBeanContext的监听器
 	 * @return
 	 */
 	@Bean
-	public DestroyProxyBeanContext destroyProxyBeanContext() {
-		return new DestroyProxyBeanContext();
+	public DestroyProxyBeanContextListener destroyProxyBeanContextListener() {
+		return new DestroyProxyBeanContextListener();
 	}
 	
 	// 注册默认的数据源
