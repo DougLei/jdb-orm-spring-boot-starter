@@ -17,6 +17,6 @@ public class TransactionComponentRegistry extends TransactionComponentRegister2S
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
 		AnnotationAttributes transactionComponentScanAttrs = 
 				AnnotationAttributes.fromMap(importingClassMetadata.getAnnotationAttributes(TransactionComponentScan.class.getName()));
-		register2Spring(registry, transactionComponentScanAttrs.getBoolean("searchAllPath"), transactionComponentScanAttrs.getStringArray("transactionComponentPackages"));
+		register2Spring(registry, transactionComponentScanAttrs.getBoolean("searchAll"), transactionComponentScanAttrs.getStringArray("transactionComponentPackages"));
 	}
 }
