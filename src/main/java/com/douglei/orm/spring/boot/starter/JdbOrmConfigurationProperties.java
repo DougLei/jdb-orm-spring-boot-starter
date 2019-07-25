@@ -12,7 +12,6 @@ import com.douglei.tools.utils.StringUtil;
 @ConfigurationProperties(prefix = "jdb.orm")
 public class JdbOrmConfigurationProperties {
 	// 这些属性必须提供get/set方法, 或者只有get/set方法都行, 才可以在spring的application.properties文件中通过快捷方式直接带出来
-	// 而且这些属性都必须是基础类型, 或者String类型
 	
 	private String defaultSessionFactoryConfigurationFile;// 默认数据源配置
 	public void setDefaultSessionFactoryConfigurationFile(String defaultSessionFactoryConfigurationFile) {
