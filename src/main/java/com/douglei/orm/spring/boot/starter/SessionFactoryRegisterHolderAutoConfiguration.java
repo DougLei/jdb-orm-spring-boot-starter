@@ -29,7 +29,7 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 	@ConditionalOnMissingBean(SessionFactoryRegister.class) // 如果容器中不存在该类实例, 则创建该类的实例, 并加入到容器中
 	public SessionFactoryRegister sessionFactoryRegister() { // 方法名要和返回值的类型名一致, 首字母小写
 		sessionFactoryRegister = new SessionFactoryRegister();
-		registerDefaultSessionFactory(jdbOrmConfigurationProperties.getDefaultConfiguration_());
+		registerDefaultSessionFactory(jdbOrmConfigurationProperties.defaultConfiguration());
 		return sessionFactoryRegister;
 	}
 	

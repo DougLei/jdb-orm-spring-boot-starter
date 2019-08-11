@@ -1,7 +1,5 @@
 package com.douglei.orm.spring.boot.starter;
 
-import javax.sql.DataSource;
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import com.douglei.orm.configuration.Configuration;
@@ -30,12 +28,9 @@ public class JdbOrmConfigurationProperties {
 		this.dataSourceCloseMethodName = dataSourceCloseMethodName;
 	}
 	
-	
-	public ConfigurationWrapper getDefaultConfiguration_() {
+	public ConfigurationWrapper defaultConfiguration() {
 		ConfigurationWrapper defaultConfiguration = new ConfigurationWrapper();
 		defaultConfiguration.setConfigurationFile(this.defaultConfiguration==null?Configuration.DEFAULT_CONF_FILE:this.defaultConfiguration);
-//		defaultConfiguration.setDataSource(dataSource);
-//		defaultConfiguration.setMappingCacheStore(mappingCacheStore);
 		return defaultConfiguration;
 	}
 }
