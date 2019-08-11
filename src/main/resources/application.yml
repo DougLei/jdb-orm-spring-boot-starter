@@ -1,12 +1,3 @@
 jdb:
   orm:
-    # 配置默认数据源
-    default-configuration:
-      configuration-file: jdb-orm.conf.xml
-      data-source:
-        data-source: 
-        close-method-name: 
-      mapping-cache-store:
-    # 配置多数据源, 非必须配置, 
-    configurations:
-    - configuration-file: xxx.xml
+    default-configuration: jdb-orm.conf.xml

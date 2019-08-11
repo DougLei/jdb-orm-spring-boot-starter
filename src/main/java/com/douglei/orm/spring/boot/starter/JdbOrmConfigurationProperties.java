@@ -1,5 +1,7 @@
 package com.douglei.orm.spring.boot.starter;
 
+import javax.sql.DataSource;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import com.douglei.orm.configuration.Configuration;
@@ -12,24 +14,28 @@ import com.douglei.orm.spring.ConfigurationWrapper;
 @ConfigurationProperties(prefix = "jdb.orm")
 public class JdbOrmConfigurationProperties {
 	
-	private ConfigurationWrapper defaultConfiguration;// 默认数据源配置
-	public void setDefaultConfiguration(ConfigurationWrapper defaultConfiguration) {
+	private String defaultConfiguration;// 默认数据源配置
+	public void setDefaultConfiguration(String defaultConfiguration) {
 		this.defaultConfiguration = defaultConfiguration;
 	}
-	public ConfigurationWrapper getDefaultConfiguration() {
-		if(defaultConfiguration == null) {
-			defaultConfiguration = new ConfigurationWrapper();
-			defaultConfiguration.setConfigurationFile(Configuration.DEFAULT_CONF_FILE);
-		}
+	public String getDefaultConfiguration() {
 		return defaultConfiguration;
 	}
 	
-	
-	private ConfigurationWrapper[] configurations;// 多数据源配置
-	public void setConfigurations(ConfigurationWrapper[] configurations) {
-		this.configurations = configurations;
+	private String dataSourceCloseMethodName;// 数据源关闭的方法名
+	public String getDataSourceCloseMethodName() {
+		return dataSourceCloseMethodName;
 	}
-	public ConfigurationWrapper[] getConfigurations() {
-		return configurations;
+	public void setDataSourceCloseMethodName(String dataSourceCloseMethodName) {
+		this.dataSourceCloseMethodName = dataSourceCloseMethodName;
+	}
+	
+	
+	public ConfigurationWrapper getDefaultConfiguration_() {
+		ConfigurationWrapper defaultConfiguration = new ConfigurationWrapper();
+		defaultConfiguration.setConfigurationFile(this.defaultConfiguration==null?Configuration.DEFAULT_CONF_FILE:this.defaultConfiguration);
+//		defaultConfiguration.setDataSource(dataSource);
+//		defaultConfiguration.setMappingCacheStore(mappingCacheStore);
+		return defaultConfiguration;
 	}
 }

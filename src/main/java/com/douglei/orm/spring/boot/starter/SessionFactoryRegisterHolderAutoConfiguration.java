@@ -29,23 +29,13 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 	@ConditionalOnMissingBean(SessionFactoryRegister.class) // 如果容器中不存在该类实例, 则创建该类的实例, 并加入到容器中
 	public SessionFactoryRegister sessionFactoryRegister() { // 方法名要和返回值的类型名一致, 首字母小写
 		sessionFactoryRegister = new SessionFactoryRegister();
-		registerDefaultSessionFactory(jdbOrmConfigurationProperties.getDefaultConfiguration());
-		registerSessionFactorys(jdbOrmConfigurationProperties.getConfigurations());
+		registerDefaultSessionFactory(jdbOrmConfigurationProperties.getDefaultConfiguration_());
 		return sessionFactoryRegister;
 	}
 	
 	// 注册默认的数据源
 	private void registerDefaultSessionFactory(ConfigurationWrapper defaultConfiguration) {
 		sessionFactoryRegister.registerDefaultSessionFactory(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingCacheStore(), false);
-	}
-	
-	// 注册多数据源
-	private void registerSessionFactorys(ConfigurationWrapper[] configurations) {
-		if(configurations != null && configurations.length > 0) {
-			for (ConfigurationWrapper configuration : configurations) {
-				sessionFactoryRegister.registerSessionFactoryByConfigurationFile(configuration.getConfigurationFile(), configuration.getDataSource(), configuration.getMappingCacheStore());
-			}
-		}
 	}
 	
 	/**
