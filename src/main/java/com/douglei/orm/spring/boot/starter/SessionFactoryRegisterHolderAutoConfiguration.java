@@ -1,7 +1,5 @@
 package com.douglei.orm.spring.boot.starter;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -29,7 +27,7 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 	
 	@Bean // 将该方法产生的bean存储到spring容器中
 	@ConditionalOnMissingBean(SessionFactoryRegister.class) // 如果容器中不存在该类实例, 则创建该类的实例, 并加入到容器中
-	public SessionFactoryRegister sessionFactoryRegister(DataSource dataSource) { // 方法名要和返回值的类型名一致, 首字母小写
+	public SessionFactoryRegister sessionFactoryRegister() { // 方法名要和返回值的类型名一致, 首字母小写
 		sessionFactoryRegister = new SessionFactoryRegister();
 		registerDefaultSessionFactory(jdbOrmConfigurationProperties.defaultConfiguration());
 		return sessionFactoryRegister;
