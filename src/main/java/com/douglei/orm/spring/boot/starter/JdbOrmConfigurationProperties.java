@@ -28,6 +28,14 @@ public class JdbOrmConfigurationProperties {
 		this.dataSourceCloseMethodName = dataSourceCloseMethodName;
 	}
 	
+	private boolean enableRedisStoreMapping;// 是否启用redis存储mapping
+	public boolean isEnableRedisStoreMapping() {
+		return enableRedisStoreMapping;
+	}
+	public void setEnableRedisStoreMapping(boolean enableRedisStoreMapping) {
+		this.enableRedisStoreMapping = enableRedisStoreMapping;
+	}
+	
 	public ConfigurationWrapper defaultConfiguration() {
 		ConfigurationWrapper defaultConfiguration = new ConfigurationWrapper();
 		defaultConfiguration.setConfigurationFile(this.defaultConfiguration==null?Configuration.DEFAULT_CONF_FILE:this.defaultConfiguration);

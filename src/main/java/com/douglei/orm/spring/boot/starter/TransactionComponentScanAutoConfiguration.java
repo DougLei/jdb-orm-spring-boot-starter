@@ -12,8 +12,8 @@ import com.douglei.orm.spring.TransactionComponentProxyBeanFactory;
  * 事物组件扫描的自动配置
  * @author DougLei
  */
-@Configuration // 标明这是一个配置类
-@ConditionalOnClass(SessionFactoryRegister.class) // @ConditionalOnXXX, 满足指定条件时, 该配置类生效, 该配置表示当前classpath中存在SessionFactoryRegister类时, 该配置类生效
+@Configuration 
+@ConditionalOnClass(SessionFactoryRegister.class) 
 @ConditionalOnMissingBean(TransactionComponentProxyBeanFactory.class)
 @Import(TransactionComponentAutoRegistry.class)
 public class TransactionComponentScanAutoConfiguration {
