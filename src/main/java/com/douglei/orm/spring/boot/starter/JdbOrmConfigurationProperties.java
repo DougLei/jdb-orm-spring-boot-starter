@@ -1,17 +1,8 @@
 package com.douglei.orm.spring.boot.starter;
 
-import javax.sql.DataSource;
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.data.redis.core.RedisTemplate;
 
 import com.douglei.orm.configuration.Configuration;
-import com.douglei.orm.configuration.ExternalDataSource;
-import com.douglei.orm.configuration.environment.mapping.store.MappingStore;
-import com.douglei.orm.spring.ConfigurationWrapper;
-import com.douglei.orm.spring.redis.mapping.store.RedisMappingStore;
-import com.douglei.orm.spring.redis.mapping.store.SpringRedisMappingStore;
-import com.douglei.tools.utils.reflect.ConstructorUtil;
 
 /**
  * jdb.orm框架在spring中的配置属性对象
