@@ -3,3 +3,4 @@ jdb:
     default-configuration: jdb-orm.conf.xml
     data-source-close-method-name: close
     enable-redis-store-mapping: true
+    
