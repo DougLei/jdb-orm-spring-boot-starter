@@ -25,7 +25,7 @@ public class JdbOrmConfigurationProperties {
 	
 	private boolean enableRedisStoreMapping;// 是否启用redis存储mapping
 	private String mappingStore2RedisImplClass;// 映射存储实现类(redis)的全路径, 继承 {@link SpringRedisMappingStore}类
-	private boolean multiDataSource;// 是否是多个数据源, 如果包含多个数据源, 则code需要前缀区分是哪个数据源
+	private boolean storeMultiDataSource;// 是否存储多个数据源的映射
 	
 	public String getDefaultJdbOrmConf() {
 		return defaultJdbOrmConf;
@@ -51,37 +51,10 @@ public class JdbOrmConfigurationProperties {
 	public void setMappingStore2RedisImplClass(String mappingStore2RedisImplClass) {
 		this.mappingStore2RedisImplClass = mappingStore2RedisImplClass;
 	}
-	public boolean isMultiDataSource() {
-		return multiDataSource;
+	public boolean isStoreMultiDataSource() {
+		return storeMultiDataSource;
 	}
-	public void setMultiDataSource(boolean multiDataSource) {
-		this.multiDataSource = multiDataSource;
-	}
-	
-	
-	public ConfigurationWrapper defaultConfiguration(DataSource dataSource, RedisTemplate<String, Object> redisTemplate) {
-		ConfigurationWrapper defaultConfiguration = new ConfigurationWrapper();
-		defaultConfiguration.setConfigurationFile(defaultJdbOrmConf);
-		defaultConfiguration.setDataSource(getDataSource(dataSource));
-		defaultConfiguration.setMappingStore(getMappingStore(redisTemplate));
-		return defaultConfiguration;
-	}
-	private ExternalDataSource getDataSource(DataSource dataSource) {
-		if(dataSource != null) {
-			return new ExternalDataSource(dataSource, dataSourceCloseMethodName);
-		}
-		return null;
-	}
-	private MappingStore getMappingStore(RedisTemplate<String, Object> redisTemplate) {
-		if(enableRedisStoreMapping && redisTemplate != null) {
-			if(mappingStore2RedisImplClass == null) {
-				mappingStore2RedisImplClass = RedisMappingStore.class.getName();
-			}
-			SpringRedisMappingStore srms = (SpringRedisMappingStore) ConstructorUtil.newInstance(mappingStore2RedisImplClass);
-			srms.setTemplate(redisTemplate);
-			srms.setMultiDataSource(multiDataSource);
-			return srms;
-		}
-		return null;
+	public void setStoreMultiDataSource(boolean storeMultiDataSource) {
+		this.storeMultiDataSource = storeMultiDataSource;
 	}
 }
