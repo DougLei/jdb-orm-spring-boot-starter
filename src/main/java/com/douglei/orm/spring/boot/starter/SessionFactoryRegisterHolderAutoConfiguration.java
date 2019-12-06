@@ -44,10 +44,10 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 	
 	// 注册默认的数据源
 	private void registerDefaultSessionFactory(SessionFactoryRegister sessionFactoryRegister) {
-		ConfigurationWrapper defaultConfiguration = getDefaultConfiguration(dataSource);
+		ConfigurationWrapper defaultConfiguration = getDefaultConfiguration();
 		sessionFactoryRegister.registerDefaultSessionFactory(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingStore(), false);
 	}
-	private ConfigurationWrapper getDefaultConfiguration(DataSource dataSource) {
+	private ConfigurationWrapper getDefaultConfiguration() {
 		ConfigurationWrapper defaultConfiguration = new ConfigurationWrapper();
 		defaultConfiguration.setConfigurationFile(jdbOrmConfigurationProperties.getDefaultJdbOrmConf());
 		defaultConfiguration.setDataSource(getDataSource());
