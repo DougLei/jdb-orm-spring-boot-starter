@@ -11,7 +11,7 @@ import com.douglei.orm.configuration.Configuration;
 @ConfigurationProperties(prefix = "jdb.orm")
 public class JdbOrmConfigurationProperties {
 	
-	private String defaultJdbOrmConf = Configuration.DEFAULT_CONF_FILE;// 默认jdb-orm.conf
+	private String defaultJdbOrmConf = Configuration.DEFAULT_CONFIGURATION_FILE_PATH;// 默认jdb-orm.conf
 	private String dataSourceCloseMethodName;// 数据源关闭的方法名
 	
 	private boolean enableRedisStoreMapping;// 是否启用redis存储mapping
