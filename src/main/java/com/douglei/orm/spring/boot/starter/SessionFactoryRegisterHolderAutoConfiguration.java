@@ -45,7 +45,7 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 	// 注册默认的数据源
 	private void registerDefaultSessionFactory(SessionFactoryRegister sessionFactoryRegister) {
 		ConfigurationWrapper defaultConfiguration = getDefaultConfiguration();
-		sessionFactoryRegister.registerDefaultSessionFactory(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingStore(), false);
+		sessionFactoryRegister.registerSessionFactoryByFile(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingStore());
 	}
 	private ConfigurationWrapper getDefaultConfiguration() {
 		ConfigurationWrapper defaultConfiguration = new ConfigurationWrapper();
