@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import com.douglei.orm.configuration.ExternalDataSource;
 import com.douglei.orm.configuration.environment.mapping.store.MappingStore;
 import com.douglei.orm.context.SessionFactoryRegister;
+import com.douglei.orm.context.exception.TooManyInstanceException;
 import com.douglei.orm.spring.ConfigurationWrapper;
 import com.douglei.orm.spring.DestroyProxyBeanContextListener;
 
@@ -36,7 +37,7 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 	
 	@Bean
 	@ConditionalOnMissingBean(SessionFactoryRegister.class)
-	public SessionFactoryRegister sessionFactoryRegister() {
+	public SessionFactoryRegister sessionFactoryRegister() throws TooManyInstanceException {
 		SessionFactoryRegister sessionFactoryRegister = new SessionFactoryRegister();
 		registerDefaultSessionFactory(sessionFactoryRegister);
 		return sessionFactoryRegister;
