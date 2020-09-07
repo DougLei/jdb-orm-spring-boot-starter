@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 
 import com.douglei.orm.configuration.ExternalDataSource;
 import com.douglei.orm.configuration.environment.mapping.store.MappingStore;
+import com.douglei.orm.context.IdDuplicateException;
 import com.douglei.orm.context.SessionFactoryRegister;
-import com.douglei.orm.context.exception.TooManyInstanceException;
 import com.douglei.orm.spring.ConfigurationWrapper;
 import com.douglei.orm.spring.DestroyProxyBeanContextListener;
 
@@ -37,16 +37,16 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 	
 	@Bean
 	@ConditionalOnMissingBean(SessionFactoryRegister.class)
-	public SessionFactoryRegister sessionFactoryRegister() throws TooManyInstanceException {
-		SessionFactoryRegister sessionFactoryRegister = new SessionFactoryRegister();
+	public SessionFactoryRegister sessionFactoryRegister() throws IdDuplicateException  {
+		SessionFactoryRegister sessionFactoryRegister = SessionFactoryRegister.getSingleton();
 		registerDefaultSessionFactory(sessionFactoryRegister);
 		return sessionFactoryRegister;
 	}
 	
 	// 注册默认的数据源
-	private void registerDefaultSessionFactory(SessionFactoryRegister sessionFactoryRegister) {
+	private void registerDefaultSessionFactory(SessionFactoryRegister sessionFactoryRegister) throws IdDuplicateException {
 		ConfigurationWrapper defaultConfiguration = getDefaultConfiguration();
-		sessionFactoryRegister.registerSessionFactoryByFile(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingStore());
+		sessionFactoryRegister.registerByFile(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingStore());
 	}
 	private ConfigurationWrapper getDefaultConfiguration() {
 		ConfigurationWrapper defaultConfiguration = new ConfigurationWrapper();
