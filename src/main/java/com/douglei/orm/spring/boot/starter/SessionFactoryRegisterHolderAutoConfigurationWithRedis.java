@@ -8,9 +8,9 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
 
-import com.douglei.orm.configuration.environment.mapping.store.MappingStore;
-import com.douglei.orm.spring.redis.mapping.store.SpringRedisMappingStoreImpl;
-import com.douglei.orm.spring.redis.mapping.store.SpringRedisMappingStore;
+import com.douglei.orm.configuration.environment.mapping.container.MappingContainer;
+import com.douglei.orm.spring.redis.mapping.store.SpringRedisMappingContainer;
+import com.douglei.orm.spring.redis.mapping.store.SpringRedisMappingContainerImpl;
 import com.douglei.tools.utils.reflect.ConstructorUtil;
 
 /**
@@ -34,13 +34,13 @@ public class SessionFactoryRegisterHolderAutoConfigurationWithRedis extends Sess
 	}
 	
 	@Override
-	protected MappingStore getMappingStore() {
+	protected MappingContainer getMappingContainer() {
 		if(jdbOrmConfigurationProperties.isEnableRedisStoreMapping() && redisTemplate != null) {
-			String mappingStore2RedisImplClass = jdbOrmConfigurationProperties.getMappingStore2RedisImplClass();
-			if(mappingStore2RedisImplClass == null) {
-				mappingStore2RedisImplClass = SpringRedisMappingStoreImpl.class.getName();
+			String mappingContainer2RedisImplClass = jdbOrmConfigurationProperties.getMappingContainer2RedisImplClass();
+			if(mappingContainer2RedisImplClass == null) {
+				mappingContainer2RedisImplClass = SpringRedisMappingContainerImpl.class.getName();
 			}
-			SpringRedisMappingStore srms = (SpringRedisMappingStore) ConstructorUtil.newInstance(mappingStore2RedisImplClass);
+			SpringRedisMappingContainer srms = (SpringRedisMappingContainer) ConstructorUtil.newInstance(mappingContainer2RedisImplClass);
 			srms.setTemplate(redisTemplate);
 			srms.setStoreMultiDataSource(jdbOrmConfigurationProperties.isStoreMultiDataSource());
 			return srms;

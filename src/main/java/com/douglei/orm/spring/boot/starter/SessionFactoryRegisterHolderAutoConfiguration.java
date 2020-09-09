@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.douglei.orm.configuration.ExternalDataSource;
-import com.douglei.orm.configuration.environment.mapping.store.MappingStore;
+import com.douglei.orm.configuration.environment.mapping.container.MappingContainer;
 import com.douglei.orm.context.IdDuplicateException;
 import com.douglei.orm.context.SessionFactoryRegister;
 import com.douglei.orm.spring.ConfigurationWrapper;
@@ -46,13 +46,13 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 	// 注册默认的数据源
 	private void registerDefaultSessionFactory(SessionFactoryRegister sessionFactoryRegister) throws IdDuplicateException {
 		ConfigurationWrapper defaultConfiguration = getDefaultConfiguration();
-		sessionFactoryRegister.registerByFile(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingStore());
+		sessionFactoryRegister.registerByFile(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingContainer());
 	}
 	private ConfigurationWrapper getDefaultConfiguration() {
 		ConfigurationWrapper defaultConfiguration = new ConfigurationWrapper();
 		defaultConfiguration.setConfigurationFile(jdbOrmConfigurationProperties.getDefaultJdbOrmConf());
 		defaultConfiguration.setDataSource(getDataSource());
-		defaultConfiguration.setMappingStore(getMappingStore());
+		defaultConfiguration.setMappingContainer(getMappingContainer());
 		return defaultConfiguration;
 	}
 	private ExternalDataSource getDataSource() {
@@ -61,7 +61,7 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 		}
 		return null;
 	}
-	protected MappingStore getMappingStore() {
+	protected MappingContainer getMappingContainer() {
 		return null;
 	}
 	
