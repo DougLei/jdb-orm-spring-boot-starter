@@ -24,7 +24,7 @@ public @interface TransactionComponentScan {
 	 * 是否扫描所有包, 默认为true
 	 * @return
 	 */
-	boolean searchAll() default true;
+	boolean scanAll() default true;
 	
 	/**
 	 * 扫描事物的包路径数组
