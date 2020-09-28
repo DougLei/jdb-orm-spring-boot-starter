@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import com.douglei.orm.configuration.ExternalDataSource;
 import com.douglei.orm.configuration.environment.mapping.container.MappingContainer;
 import com.douglei.orm.context.IdDuplicateException;
-import com.douglei.orm.context.SessionFactoryRegister;
+import com.douglei.orm.context.SessionFactoryContainer;
 import com.douglei.orm.spring.ConfigurationWrapper;
 import com.douglei.orm.spring.DestroyProxyBeanContextListener;
 
@@ -27,7 +27,7 @@ import com.douglei.orm.spring.DestroyProxyBeanContextListener;
 @ConditionalOnMissingClass("org.springframework.data.redis.connection.RedisConnectionFactory")
 @EnableConfigurationProperties(value = JdbOrmConfigurationProperties.class)
 @AutoConfigureAfter({DataSourceAutoConfiguration.class, RedisAutoConfiguration.class})
-public class SessionFactoryRegisterHolderAutoConfiguration {
+public class SessionFactoryContainerHolderAutoConfiguration {
 	
 	@Autowired
 	protected JdbOrmConfigurationProperties jdbOrmConfigurationProperties;
@@ -36,17 +36,17 @@ public class SessionFactoryRegisterHolderAutoConfiguration {
 	protected DataSource dataSource;
 	
 	@Bean
-	@ConditionalOnMissingBean(SessionFactoryRegister.class)
-	public SessionFactoryRegister sessionFactoryRegister() throws IdDuplicateException  {
-		SessionFactoryRegister sessionFactoryRegister = SessionFactoryRegister.getSingleton();
-		registerDefaultSessionFactory(sessionFactoryRegister);
-		return sessionFactoryRegister;
+	@ConditionalOnMissingBean(SessionFactoryContainer.class)
+	public SessionFactoryContainer sessionFactoryContainer() throws IdDuplicateException  {
+		SessionFactoryContainer container = SessionFactoryContainer.getSingleton();
+		registerDefaultSessionFactory(container);
+		return container;
 	}
 	
 	// 注册默认的数据源
-	private void registerDefaultSessionFactory(SessionFactoryRegister sessionFactoryRegister) throws IdDuplicateException {
+	private void registerDefaultSessionFactory(SessionFactoryContainer container) throws IdDuplicateException {
 		ConfigurationWrapper defaultConfiguration = getDefaultConfiguration();
-		sessionFactoryRegister.registerByFile(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingContainer());
+		container.registerByFile(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingContainer());
 	}
 	private ConfigurationWrapper getDefaultConfiguration() {
 		ConfigurationWrapper defaultConfiguration = new ConfigurationWrapper();

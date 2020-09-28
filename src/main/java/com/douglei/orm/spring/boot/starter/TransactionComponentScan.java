@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Import;
 
-import com.douglei.orm.context.SessionFactoryRegister;
+import com.douglei.orm.context.SessionFactoryContainer;
 
 /**
  * 事物组件扫描的注解
@@ -16,11 +16,19 @@ import com.douglei.orm.context.SessionFactoryRegister;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@ConditionalOnClass(SessionFactoryRegister.class) // @ConditionalOnXXX, 满足指定条件时, 该配置类生效, 该配置表示当前classpath中存在SessionFactoryRegister类时, 该配置类生效
+@ConditionalOnClass(SessionFactoryContainer.class) // @ConditionalOnXXX, 满足指定条件时, 该配置类生效, 该配置表示当前classpath中存在SessionFactoryContainer类时, 该配置类生效
 @Import(TransactionComponentRegistry.class)
 public @interface TransactionComponentScan {
 	
+	/**
+	 * 是否扫描所有包, 默认为true
+	 * @return
+	 */
 	boolean searchAll() default true;
 	
+	/**
+	 * 扫描事物的包路径数组
+	 * @return
+	 */
 	String[] transactionComponentPackages();
 }

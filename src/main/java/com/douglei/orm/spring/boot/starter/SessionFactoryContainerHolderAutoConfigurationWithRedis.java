@@ -19,7 +19,7 @@ import com.douglei.tools.utils.reflect.ConstructorUtil;
  */
 @Configuration
 @ConditionalOnClass(RedisConnectionFactory.class)
-public class SessionFactoryRegisterHolderAutoConfigurationWithRedis extends SessionFactoryRegisterHolderAutoConfiguration{
+public class SessionFactoryContainerHolderAutoConfigurationWithRedis extends SessionFactoryContainerHolderAutoConfiguration{
 	
 	@Autowired
 	private RedisTemplate<String, Object> redisTemplate;

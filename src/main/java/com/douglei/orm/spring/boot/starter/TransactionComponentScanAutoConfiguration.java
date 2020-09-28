@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import com.douglei.orm.context.SessionFactoryRegister;
+import com.douglei.orm.context.SessionFactoryContainer;
 import com.douglei.orm.spring.TransactionComponentProxyBeanFactory;
 
 /**
@@ -13,7 +13,7 @@ import com.douglei.orm.spring.TransactionComponentProxyBeanFactory;
  * @author DougLei
  */
 @Configuration 
-@ConditionalOnClass(SessionFactoryRegister.class) 
+@ConditionalOnClass(SessionFactoryContainer.class) 
 @ConditionalOnMissingBean(TransactionComponentProxyBeanFactory.class)
 @Import(TransactionComponentAutoRegistry.class)
 public class TransactionComponentScanAutoConfiguration {
