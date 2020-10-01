@@ -35,7 +35,7 @@ public class SessionFactoryContainerHolderAutoConfigurationWithRedis extends Ses
 	
 	@Override
 	protected MappingContainer getMappingContainer() {
-		if(jdbOrmConfigurationProperties.isEnableRedisStoreMapping() && redisTemplate != null) {
+		if(jdbOrmConfigurationProperties.isEnableRedisStoreMapping()) {
 			String mappingContainer2RedisImplClass = jdbOrmConfigurationProperties.getMappingContainer2RedisImplClass();
 			if(mappingContainer2RedisImplClass == null) {
 				mappingContainer2RedisImplClass = SpringRedisMappingContainerImpl.class.getName();
