@@ -2,7 +2,7 @@ package com.douglei.orm.spring.boot.starter;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import com.douglei.orm.Configuration;
+import com.douglei.orm.configuration.Configuration;
 
 /**
  * jdb.orm框架在spring中的配置属性对象

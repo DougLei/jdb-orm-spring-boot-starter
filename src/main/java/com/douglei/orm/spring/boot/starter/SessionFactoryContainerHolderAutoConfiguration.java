@@ -12,7 +12,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.douglei.orm.ExternalDataSource;
+import com.douglei.orm.configuration.ExternalDataSource;
 import com.douglei.orm.context.IdDuplicateException;
 import com.douglei.orm.context.SessionFactoryContainer;
 import com.douglei.orm.mapping.container.MappingContainer;
