@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.douglei.orm.configuration.ExternalDataSource;
-import com.douglei.orm.context.IdDuplicateException;
+import com.douglei.orm.context.IdRepeatedException;
 import com.douglei.orm.context.SessionFactoryContainer;
 import com.douglei.orm.mapping.container.MappingContainer;
 import com.douglei.orm.spring.ConfigurationWrapper;
@@ -37,14 +37,14 @@ public class SessionFactoryContainerHolderAutoConfiguration {
 	
 	@Bean
 	@ConditionalOnMissingBean(SessionFactoryContainer.class)
-	public SessionFactoryContainer sessionFactoryContainer() throws IdDuplicateException  {
+	public SessionFactoryContainer sessionFactoryContainer() throws IdRepeatedException  {
 		SessionFactoryContainer container = SessionFactoryContainer.getSingleton();
 		registerDefaultSessionFactory(container);
 		return container;
 	}
 	
 	// 注册默认的数据源
-	private void registerDefaultSessionFactory(SessionFactoryContainer container) throws IdDuplicateException {
+	private void registerDefaultSessionFactory(SessionFactoryContainer container) throws IdRepeatedException {
 		ConfigurationWrapper defaultConfiguration = getDefaultConfiguration();
 		container.registerByFile(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingContainer());
 	}
