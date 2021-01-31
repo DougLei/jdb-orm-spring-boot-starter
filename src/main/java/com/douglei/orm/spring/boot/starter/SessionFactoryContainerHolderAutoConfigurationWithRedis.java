@@ -11,7 +11,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import com.douglei.orm.mapping.container.MappingContainer;
 import com.douglei.orm.spring.redis.mapping.store.SpringRedisMappingContainer;
 import com.douglei.orm.spring.redis.mapping.store.SpringRedisMappingContainerImpl;
-import com.douglei.tools.utils.reflect.ConstructorUtil;
+import com.douglei.tools.reflect.ConstructorUtil;
 
 /**
  * 
