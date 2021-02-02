@@ -11,7 +11,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import com.douglei.orm.mapping.container.MappingContainer;
 import com.douglei.orm.spring.redis.mapping.store.SpringRedisMappingContainer;
 import com.douglei.orm.spring.redis.mapping.store.SpringRedisMappingContainerImpl;
-import com.douglei.tools.reflect.ConstructorUtil;
+import com.douglei.tools.reflect.ClassUtil;
 
 /**
  * 
@@ -40,7 +40,7 @@ public class SessionFactoryContainerHolderAutoConfigurationWithRedis extends Ses
 			if(mappingContainer2RedisImplClass == null) {
 				mappingContainer2RedisImplClass = SpringRedisMappingContainerImpl.class.getName();
 			}
-			SpringRedisMappingContainer srms = (SpringRedisMappingContainer) ConstructorUtil.newInstance(mappingContainer2RedisImplClass);
+			SpringRedisMappingContainer srms = (SpringRedisMappingContainer) ClassUtil.newInstance(mappingContainer2RedisImplClass);
 			srms.setTemplate(redisTemplate);
 			srms.setStoreMultiDataSource(jdbOrmConfigurationProperties.isStoreMultiDataSource());
 			return srms;
