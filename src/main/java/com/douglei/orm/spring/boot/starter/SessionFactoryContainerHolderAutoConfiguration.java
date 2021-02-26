@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import com.douglei.orm.configuration.ExternalDataSource;
 import com.douglei.orm.context.IdRepeatedException;
 import com.douglei.orm.context.SessionFactoryContainer;
-import com.douglei.orm.mapping.container.MappingContainer;
+import com.douglei.orm.mapping.MappingContainer;
 import com.douglei.orm.spring.ConfigurationWrapper;
 import com.douglei.orm.spring.DestroyProxyBeanContextListener;
 
