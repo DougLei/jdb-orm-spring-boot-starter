@@ -17,5 +17,4 @@ import com.douglei.orm.spring.TransactionComponentProxyBeanFactory;
 @ConditionalOnMissingBean(TransactionComponentProxyBeanFactory.class)
 @Import(TransactionComponentAutoRegistry.class)
 public class TransactionComponentScanAutoConfiguration {
-
 }

@@ -16,7 +16,7 @@ import com.douglei.orm.configuration.ExternalDataSource;
 import com.douglei.orm.context.IdRepeatedException;
 import com.douglei.orm.context.SessionFactoryContainer;
 import com.douglei.orm.mapping.MappingContainer;
-import com.douglei.orm.spring.ConfigurationWrapper;
+import com.douglei.orm.spring.ConfigurationEntity;
 import com.douglei.orm.spring.DestroyProxyBeanContextListener;
 
 /**
@@ -45,11 +45,11 @@ public class SessionFactoryContainerHolderAutoConfiguration {
 	
 	// 注册默认的数据源
 	private void registerDefaultSessionFactory(SessionFactoryContainer container) throws IdRepeatedException {
-		ConfigurationWrapper defaultConfiguration = getDefaultConfiguration();
+		ConfigurationEntity defaultConfiguration = getDefaultConfiguration();
 		container.registerByFile(defaultConfiguration.getConfigurationFile(), defaultConfiguration.getDataSource(), defaultConfiguration.getMappingContainer());
 	}
-	private ConfigurationWrapper getDefaultConfiguration() {
-		ConfigurationWrapper defaultConfiguration = new ConfigurationWrapper();
+	private ConfigurationEntity getDefaultConfiguration() {
+		ConfigurationEntity defaultConfiguration = new ConfigurationEntity();
 		defaultConfiguration.setConfigurationFile(jdbOrmConfigurationProperties.getDefaultJdbOrmConf());
 		defaultConfiguration.setDataSource(getDataSource());
 		defaultConfiguration.setMappingContainer(getMappingContainer());
