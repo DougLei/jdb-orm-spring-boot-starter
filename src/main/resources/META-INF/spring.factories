@@ -1,4 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.douglei.orm.spring.boot.starter.SessionFactoryContainerHolderAutoConfiguration,\
-com.douglei.orm.spring.boot.starter.SessionFactoryContainerHolderAutoConfigurationWithRedis,\
-com.douglei.orm.spring.boot.starter.TransactionComponentScanAutoConfiguration
+com.douglei.orm.spring.boot.starter.SessionFactoryAutoRegistry,\
+com.douglei.orm.spring.boot.starter.TransactionComponentAutoScan

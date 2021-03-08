@@ -30,5 +30,5 @@ public @interface TransactionComponentScan {
 	 * 扫描事物的包路径数组
 	 * @return
 	 */
-	String[] transactionComponentPackages();
+	String[] packages();
 }
