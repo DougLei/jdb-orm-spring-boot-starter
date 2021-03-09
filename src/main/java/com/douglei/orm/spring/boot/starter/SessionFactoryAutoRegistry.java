@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.douglei.orm.configuration.ExternalDataSource;
-import com.douglei.orm.context.IdRepeatedException;
 import com.douglei.orm.context.SessionFactoryContainer;
 import com.douglei.orm.spring.ConfigurationEntity;
 import com.douglei.orm.spring.DestroyProxyBeanContextListener;
@@ -33,7 +32,7 @@ public class SessionFactoryAutoRegistry {
 	
 	@Bean
 	@ConditionalOnMissingBean(SessionFactoryContainer.class)
-	public SessionFactoryContainer sessionFactoryContainer() throws IdRepeatedException  {
+	public SessionFactoryContainer sessionFactoryContainer() {
 		// 初始化JDB-ORM的Configuration
 		ConfigurationEntity entity = new ConfigurationEntity();
 		entity.setFilepath(config.getFilepath());
